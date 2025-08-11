@@ -1,0 +1,192 @@
+<html>
+
+<head>
+	<title>nombre del documento web</title>
+	<meta charset="UTF-8">
+	<meta name="description" content"Instituto encargada de agilizar la documentación migratoria asimismo el ingreso
+		rápido y seguro a México">
+	<meta keywords="Migración, documentación, instituto, migratoria, ingreso, México">
+
+	<!-- UIkit CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.23.11/dist/css/uikit.min.css" />
+
+	<!-- UIkit JS -->
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.23.11/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.23.11/dist/js/uikit-icons.min.js"></script>
+
+	<style>
+		.headerD {
+			padding: 10px 0px;
+			background: #3a665e;
+			position:fixed;
+			top:0;
+		}
+		
+		.contenedor{
+		  margin-top:100px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<header class="headerD">
+		<nav class="uk-flex uk-flex-between uk-flex-middle uk-width-4-5 uk-margin-auto-left uk-margin-auto-right">
+			<div class="uk-width-1-3">
+				<img src="./banner.png" />
+			</div>
+
+			<div class="uk-width-1-6">
+				<a href="https://www.gob.mx/inm">
+					<img src="./logo.png" />
+				</a>
+			</div>
+		</nav>
+	</header>
+
+	<main class="contenedor uk-width-4-5 uk-margin-auto-left uk-margin-auto-right">
+	  <section class="uk-section">
+	    <h1 class="uk-text-center uk-padding-small">Registros del INM</h1>
+		  <table class="uk-table uk-table-divider">
+			  <thead>
+				  <tr>
+					  <th>Nombre de la persona</th>
+					  <th>Edad</th>
+					  <th>Domicilio</th>
+					  <th>Modificar</th>
+					  <th>Eliminar</th>
+				  </tr>
+			  </thead>
+			  <tbody id="bodyT">
+			  </tbody>
+		  </table>
+		</section>
+		<section>
+		<hr>
+
+    <section class="uk-section">
+      <div>
+
+        <h2 class="uk-text-center">Información adicional</h2>
+
+        <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+          <div>
+              <div class="uk-card uk-card-default uk-card-body">
+                <h2 class="uk-card-title">¿Qué hacemos?</h2>
+                <p>El Instituto Nacional de Migración en cumplimiento con las leyes mexicanas y tratados internacionales aplica de manera permanente diversas disposiciones, para otorgarles a todos los extranjeros las facilidades necesarias para llevar a cabo procedimientos migratorios legales, ordenados y seguros que permitan su ingreso y estancia en territorio nacional con estricto apego a proteger los derechos humanos,  implementando los ordenamientos establecidos en la Ley de Migración y su reglamento.</p>
+              </div>
+          </div>
+          <div>
+              <div class="uk-card uk-card-default uk-card-body">
+                <h2 class="uk-card-title">Misión</h2>
+                <p>
+                  Instrumentar la política en materia migratoria bajo los principios de respeto y seguridad de las personas migrantes nacionales y extranjeras con independencia de su situación migratoria durante su ingreso, tránsito y salida del territorio nacional, reconociéndolos como sujetos de derecho, mediante la eficiencia y eficacia de los trámites y procedimientos migratorios, para contribuir a que la movilidad y migración internacional sea ordenada, segura y regular con base en el marco legal y con pleno respeto a los derechos humanos.
+                </p>
+              </div>
+          </div>
+          <div>
+              <div class="uk-card uk-card-default uk-card-body">
+                <h2 class="uk-card-title">Visión</h2>
+                <p>
+                  Ser la Institución que garantice una gestión migratoria con pleno respeto a las personas migrantes, bajo un esquema de profesionalización de los servidores públicos, orientada a procesos, con incorporación de tecnologías de la información, facilitando y simplificando trámites y procedimientos migratorios y fortaleciendo acciones de control, revisión y verificación migratoria para una migración segura, ordenada y regular.
+                </p>
+              </div>
+          </div>
+      </div>
+
+      </div>
+		</section>
+	</main>
+	
+	<script>
+	  let arr = [
+	    {
+	      nombre:"nombre1",
+	      edad:18,
+	      domicilio:"Domicilio1"
+	    },{
+	      nombre:"nombre2",
+	      edad:20,
+	      domicilio:"Domicilio2"
+	    },{
+	      nombre:"nombre3",
+	      edad:18,
+	      domicilio:"Domicilio3"
+	    },{
+	      nombre:"nombre4",
+	      edad:21,
+	      domicilio:"Domicilio4"
+	    },{
+	      nombre:"nombre5",
+	      edad:28,
+	      domicilio:"Domicilio5"
+	    },{
+	      nombre:"nombre6",
+	      edad:18,
+	      domicilio:"Domicilio6"
+	    },{
+	      nombre:"nombre7",
+	      edad:18,
+	      domicilio:"Domicilio7"
+	    },{
+	      nombre:"nombre8",
+	      edad:18,
+	      domicilio:"Domicilio8"
+	    },{
+	      nombre:"nombre9",
+	      edad:18,
+	      domicilio:"Domicilio9"
+	    },{
+	      nombre:"nombre10",
+	      edad:18,
+	      domicilio:"Domicilio10"
+	    }
+	  ]
+	  
+	  let tbody = document.getElementById("bodyT");
+	  
+	  let filas = arr.map(persona => `
+      <tr>
+        <td>${persona.nombre}</td>
+        <td>${persona.edad}</td>
+        <td>${persona.domicilio}</td>
+        <td><button class="uk-button uk-button-primary" onclick="modificar('${persona.nombre}')">Modificar</button></td>
+        <td><button class="uk-button uk-button-danger" onclick="eliminar('${persona.nombre}')">Eliminar</button></td>
+      </tr>
+    `).join("");
+    
+    console.log(filas);
+    
+    tbody.innerHTML = filas;
+  
+    function modificar(nombre) {
+      alert(`Modificar: ${nombre}`);
+    }
+
+    function eliminar(nombre) {
+      alert(`Eliminar ${nombre}`);
+      let indice = -1;
+      for(let i = 0; i<arr.length; i++){
+        if(arr[i].nombre == nombre){
+          indice = i;
+        }
+      }
+      if(indice != -1){
+        arr.splice(indice,1)
+        filas = arr.map(persona => `
+          <tr>
+            <td>${persona.nombre}</td>
+            <td>${persona.edad}</td>
+            <td>${persona.domicilio}</td>
+            <td><button class="uk-button uk-button-primary" onclick="modificar('${persona.nombre}')">Modificar</button></td>
+            <td><button class="uk-button uk-button-danger" onclick="eliminar('${persona.nombre}')">Eliminar</button></td>
+          </tr>
+        `).join("")
+        tbody.innerHTML = filas;
+      }
+    }
+	  
+	</script>
+</body>
+
+</html>
