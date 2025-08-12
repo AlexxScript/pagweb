@@ -67,22 +67,22 @@
 					<div class="uk-margin">
 						<label class="uk-form-label" for="form-stacked-text">Nombre</label>
 						<div class="uk-form-controls">
-							<input class="uk-input" id="form-stacked-text" type="text" placeholder="Nombre...">
+							<input class="uk-input nombre" id="form-stacked-text" type="text" placeholder="Nombre...">
 						</div>
 					</div>
 					<div class="uk-margin">
 						<label class="uk-form-label" for="form-stacked-text">Edad</label>
 						<div class="uk-form-controls">
-							<input class="uk-input" id="form-stacked-text" type="number" placeholder="" min="1">
+							<input class="uk-input edad" id="form-stacked-text" type="number" placeholder="" min="1">
 						</div>
 					</div>
 					<div class="uk-margin">
 						<label class="uk-form-label" for="form-stacked-text">Domicilio</label>
 						<div class="uk-form-controls">
-							<input class="uk-input" id="form-stacked-text" type="text" placeholder="Domicilio...">
+							<input class="uk-input domicilio" id="form-stacked-text domicilio" type="text" placeholder="Domicilio...">
 						</div>
 					</div>
-					<button class="uk-button uk-button-primary">Guardar nuevo registro</button>
+					<button class="uk-button uk-button-primary" type="submit">Guardar nuevo registro</button>
 				</form>
 			</div>
 		</section>
@@ -206,6 +206,26 @@
 						$(tbody).html(table_data);
 					}
 				});
+			});
+
+			$("form").submit(function (e) {
+				e.preventDefault();
+				var nombre = $(".nombre").val();
+				var edad = $(".edad").val();
+				var domicilio = $(".domicilio").val();
+				if (nombre && edad && domicilio) {
+					var nuevaFila = `
+                <tr>
+                    <td>${nombre}</td>
+                    <td>${edad}</td>
+                    <td>${domicilio}</td>
+                </tr>
+            	`;
+					$("#bodyT").append(nuevaFila);
+					$("form")[0].reset();
+				} else {
+					alert("Por favor completa todos los campos");
+				}
 			});
 
 			$("#gJson").click(function () {
